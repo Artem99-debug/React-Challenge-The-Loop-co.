@@ -1,0 +1,105 @@
+  .container {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    
+    
+.btn-primary {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-primary:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.movie-card {
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  height: 600px; /* Or any other desired height */
+  width: 300px;
+
+}
+
+
+.movie-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card img {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  height: 400px; /* Or any other desired height */
+  width: 300px;
+}
+
+.movie-card:hover .card-body {
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 0.5s ease-in-out;
+}
+
+.movie-card .card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.movie-card .card-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.movie-card-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+.favorite-button {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.favorite-button:hover {
+  color: #dc3545;
+}
+
+.movie-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie-card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+   
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+  
