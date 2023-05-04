@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash, faHeart as solidHeart, faHeart as regularHeart } from "@fortawesome/free-solid-svg-icons";
+
+
 
 const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavoriteInList, handleSeenClick, moviesList }) => {
 
@@ -37,27 +41,31 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
                 <p className="movie-card-text">{movie.Year}</p>
                 {!isFavoriteInList && !favoritos && (
                     <button
-                        className={`btn btn-"outline-primary" ms-2 favorite-button`}
+                        className="btn ms-2 favorite-button-movie-card"
                         onClick={() => handleFavoriteClick(true)}
                     >
-                        {"Add to favorites"}
+                        <FontAwesomeIcon icon={solidHeart} />
                     </button>
                 )}
                 {!moviesList && (
                     <button
-                        className={`btn btn-${isFavorite ? "alert" : "outline-primary"} ms-2 favorite-button`}
+                        className="btn  ms-2 mx-2 favorite-button-movie-favorite-card"
                         onClick={() => handleFavoriteClick("")}
                     >
-                        {isFavorite ? "Remove from favorites" : "Add to favorites"}
+                        <FontAwesomeIcon icon={isFavorite ? solidHeart : regularHeart} />
                     </button>
                 )}
                 {isFavoriteInList && favoritos && (
                     <button
-                        className="btn btn-outline-secondary btn-sm mx-2"
+                        className="btn btn-outline-secondary btn-sm "
                         onClick={handleAddSeen}
+                        style={{ marginTop: 5 }}
                     >
-                        {seen ? "Unseen" : "Seen"}
-
+                        {seen ? (
+                            <FontAwesomeIcon icon={faEyeSlash} title="Seen" />
+                        ) : (
+                            <FontAwesomeIcon icon={faEye} title="Unseen" />
+                        )}
                     </button>
                 )}
             </div>

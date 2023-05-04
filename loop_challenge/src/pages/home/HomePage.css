@@ -65,6 +65,35 @@ body {
   color: #fff;
   font-size: 1.0rem;
 }
+.favorite-button-movie-card{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+  color: #fff;
+  font-size: 1.0rem;
+}
+
+.favorite-button-movie-favorite-card{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+  color: #dc3545;
+  font-size: 1.0rem;
+}
+
+.favorite-button-movie-favorite-card:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.favorite-button-movie-card:hover {
+  color: #dc3545;
+  text-decoration: underline;
+}
 
 .favorite-button:hover {
   color: #dc3545;
@@ -83,6 +112,7 @@ body {
 .btn-primary-search {
   background-color: #c82333;
   border-color: rgba(0, 0, 0, 0.7);
+  color:white
 }
 
 .btn-primary:hover {

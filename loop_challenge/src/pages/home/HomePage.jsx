@@ -140,9 +140,9 @@ const HomePage = () => {
         <h1 className="mb-4">Favorite Movies</h1>
       }
 
-      <div className="d-flex flex-wrap justify-content-center">
+      <div className="d-flex flex-wrap ">
         {favoriteMovies.map((movie) => (
-          <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
+          <div className="col-sm-6 col-md-4 col-lg-2 my-1 mx-2" key={movie.imdbID}>
             <MovieCard
               movie={movie}
               handleAddToFavorites={(movie, isFavorite) =>
