@@ -24,7 +24,7 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
 
     return (
 
-        <div className="movie-card" style={{ opacity: seen ? 0.6 : 1, marginRight: 10 }}>
+        <div className="movie-card" style={{ opacity: seen ? 0.4 : 1 }}>
             <Link to={`/movies/${movie.imdbID}`} className="btn btn-primary">
                 <img
                     src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Image"}
@@ -45,7 +45,7 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
                 )}
                 {!moviesList && (
                     <button
-                        className={`btn btn-${isFavorite ? "danger" : "outline-primary"} ms-2 favorite-button`}
+                        className={`btn btn-${isFavorite ? "alert" : "outline-primary"} ms-2 favorite-button`}
                         onClick={() => handleFavoriteClick("")}
                     >
                         {isFavorite ? "Remove from favorites" : "Add to favorites"}
@@ -53,7 +53,7 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
                 )}
                 {isFavoriteInList && favoritos && (
                     <button
-                        className="btn btn-outline-secondary btn-sm mx-1"
+                        className="btn btn-outline-secondary btn-sm mx-2"
                         onClick={handleAddSeen}
                     >
                         {seen ? "Unseen" : "Seen"}

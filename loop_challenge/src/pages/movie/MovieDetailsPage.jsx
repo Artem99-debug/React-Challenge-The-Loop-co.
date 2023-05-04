@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ApiRequests from "../../utils/api";
+import { Spinner } from "react-bootstrap";
 
 import "./MovieDetailsPage.css";
 
@@ -31,21 +32,35 @@ const MovieDetailsPage = () => {
     }, [imdbID]);
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return (
+            <div className="d-flex justify-content-center mt-5">
+                <Spinner animation="border" variant="primary" />
+            </div>
+        );
     }
 
     return (
-        <div className="container">
+        <div className="container my-5">
             <div className="row">
                 <div className="col-md-4">
-                    <img src={movie.Poster} alt={`${movie.Title} poster`} className="img-fluid" />
+                    <img
+                        src={movie.Poster}
+                        alt={`${movie.Title} poster`}
+                        className="img-fluid rounded"
+                    />
                 </div>
                 <div className="col-md-8">
-                    <h1 className="text-white">{movie.Title}</h1>
+                    <h1 className="text-white mb-4">{movie.Title}</h1>
                     <p className="text-white">{movie.Plot}</p>
-                    <p className="text-white">Director: {movie.Director}</p>
-                    <p className="text-white">Actors: {movie.Actors}</p>
-                    <p className="text-white">IMDb Rating: {movie.imdbRating}</p>
+                    <p className="text-white">
+                        <strong>Director:</strong> {movie.Director}
+                    </p>
+                    <p className="text-white">
+                        <strong>Actors:</strong> {movie.Actors}
+                    </p>
+                    <p className="text-white">
+                        <strong>IMDb Rating:</strong> {movie.imdbRating}
+                    </p>
                 </div>
             </div>
         </div>
@@ -53,4 +68,3 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
-

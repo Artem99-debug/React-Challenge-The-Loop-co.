@@ -131,6 +131,9 @@ const HomePage = () => {
   };
 
   return (
+
+
+
     <div className="container dark-style">
       {
         favoriteMovies.length > 0 &&
@@ -229,7 +232,7 @@ const HomePage = () => {
             <div className="d-flex flex-wrap justify-content-center" style={{ marginTop: 20 }}>
               {movies.map((movie) => (
 
-                <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
+                <div className="col-sm-6 col-md-4 col-lg-2 my-1 mx-2" key={movie.imdbID}>
                   <MovieCard
                     movie={movie}
                     isFavoriteInList={favoriteMovies.find(fav => fav.imdbID === movie.imdbID)}
@@ -249,30 +252,32 @@ const HomePage = () => {
           {
             movies.length > 0 && search == "title" && (
 
-              <div class="pagination d-flex justify-content-center align-items-center bg-dark">
-                <ul class="pagination m-0 p-0 d-flex flex-row" style={{ listStyle: "none" }}>
-                  {
-                    currentPage != 1 && (
-
-                      <li class="page-item" style={{ marginRight: 5 }}>
-                        <a class="page-link" onClick={() => updatePagination(currentPage - 1)} aria-label="Previous">
-                          <span class="sr-only">Previous</span>
-                        </a>
-                      </li>
-                    )
-                  }
-                  <li class="page-item active" aria-current="page" style={{ marginRight: 5 }}>
-                    <a class="page-link" onClick={() => updatePagination(1)}>1</a>
-                  </li>
-                  <li class="page-item" style={{ marginRight: 5 }}><a class="page-link" onClick={() => updatePagination(2)}>2</a></li>
-                  <li class="page-item" style={{ marginRight: 5 }}><a class="page-link" onClick={() => updatePagination(3)}>3</a></li>
+              <nav>
+                <ul class="pagination justify-content-center bg-dark">
                   <li class="page-item">
-                    <a class="page-link" onClick={() => updatePagination(currentPage + 1)} aria-label="Next">
+                    <a class="page-link" href="#" aria-label="Previous" onClick={() => updatePagination(currentPage - 1)}>
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class={`page-item ${currentPage === 1 ? 'active' : ''}`}>
+                    <a class="page-link" href="#" onClick={() => updatePagination(1)}>1</a>
+                  </li>
+                  <li class={`page-item ${currentPage === 2 ? 'active' : ''}`}>
+                    <a class="page-link" href="#" onClick={() => updatePagination(2)}>2</a>
+                  </li>
+                  <li class={`page-item ${currentPage === 3 ? 'active' : ''}`}>
+                    <a class="page-link" href="#" onClick={() => updatePagination(3)}>3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next" onClick={() => updatePagination(currentPage + 1)}>
+                      <span aria-hidden="true">&raquo;</span>
                       <span class="sr-only">Next</span>
                     </a>
                   </li>
                 </ul>
-              </div>
+              </nav>
+
             )
           }
         </div>

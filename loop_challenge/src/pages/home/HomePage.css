@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .movie-card:hover {
@@ -32,7 +32,7 @@ body {
 .movie-card img {
   transform: scale(1.1);
   height: 250px;
-  width: 200px;
+  width: 260px;
   object-fit: cover;
 }
 
@@ -71,7 +71,9 @@ body {
   text-decoration: underline;
 }
 
-
+.btn-outline-secondary {
+  margin-bottom: 5px;
+}
 /* Button styles */
 .btn-primary {
   background-color: rgba(0, 0, 0, 0.7);
@@ -165,4 +167,23 @@ body.dark-mode {
 
 .pagination .page-link:hover {
   text-decoration: underline;
+}
+.pagination {
+  background-color: #343a40;
+}
+
+.page-link {
+  color: #292d31;
+}
+
+.page-link:hover {
+  color: #fff;
+  background-color: #292d31;
+  border-color: #292d31;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+ background-color: #292d31;
+  border-color: #292d31;
 }
