@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ApiRequests from "../../utils/api";
 import { Spinner } from "react-bootstrap";
 
@@ -61,6 +61,9 @@ const MovieDetailsPage = () => {
                     <p className="text-white">
                         <strong>IMDb Rating:</strong> {movie.imdbRating}
                     </p>
+                    <Link to="/" className="btn btn-primary">
+                        Go back to home page
+                    </Link>
                 </div>
             </div>
         </div>
