@@ -152,6 +152,7 @@ const HomePage = () => {
                 name="searchType"
                 id="searchByTitle"
                 value="title"
+                checked={search === "title"}
                 onChange={() => setSearch("title")}
               />
               <label className="form-check-label" htmlFor="searchByTitle">
