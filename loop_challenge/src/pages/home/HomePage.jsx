@@ -110,7 +110,7 @@ const HomePage = () => {
 
   return (
     <div className="container dark-style">
-      <h1 className="mb-4">Favorites</h1>
+      <h1 className="mb-4">Favorite Movies</h1>
       <div className="d-flex flex-wrap justify-content-center">
         {favoriteMovies.map((movie) => (
           <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
@@ -130,7 +130,7 @@ const HomePage = () => {
         ))}
       </div>
       <div className="text-center">
-        <div className="container my-4">
+        <div className="container my-4" >
           <h1 className="mb-4">Search for Movies</h1>
           <form onSubmit={searchMovies}>
             <div className="input-group mb-3">
@@ -197,9 +197,9 @@ const HomePage = () => {
             )}
           </form>
 
-          {errorMessage && <p className="text-danger">{errorMessage}</p>}
+          {errorMessage && <p className="text-danger" >{errorMessage}</p>}
           {movies.length > 0 && (
-            <div className="d-flex flex-wrap justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center" style={{ marginTop: 10 }}>
               {movies.map((movie) => (
                 <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
                   <MovieCard

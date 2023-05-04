@@ -24,7 +24,7 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
 
     return (
 
-        <div className="movie-card" style={{ opacity: seen ? 0.6 : 1 }}>
+        <div className="movie-card" style={{ opacity: seen ? 0.6 : 1, marginRight: 10 }}>
             <Link to={`/movies/${movie.imdbID}`} className="btn btn-primary">
                 <img
                     src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Image"}
