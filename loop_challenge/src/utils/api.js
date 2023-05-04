@@ -4,10 +4,10 @@ let REACT_APP_OMDB_API_KEY = "9610aef4";
 
 // get all movies by title
 
-async function getMovies(query) {
+async function getMovies(query, page) {
   var dados = {};
   await fetch(
-    `https://www.omdbapi.com/?s=${query}&apikey=${REACT_APP_OMDB_API_KEY}`,
+    `https://www.omdbapi.com/?s=${query}&apikey=${REACT_APP_OMDB_API_KEY}&page=${page}`,
     { method: "GET" }
   )
     .then((response) => (dados = response.json()))

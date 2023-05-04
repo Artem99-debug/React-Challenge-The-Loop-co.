@@ -15,6 +15,7 @@ const HomePage = () => {
   const [favoriteMovies, setFavoriteMovies] = useState(
     JSON.parse(localStorage.getItem("favoriteMovies")) || []
   );
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [seenMovies, setSeenMovies] = useState(
     JSON.parse(localStorage.getItem("seenMovies")) || []
@@ -54,6 +55,26 @@ const HomePage = () => {
     setSeenMovies(newSeenMovies);
   };
 
+  const updatePagination = async (page) => {
+    setCurrentPage(page);
+    let data = "";
+    try {
+      data = await ApiRequests.getMovies(query, page);
+      if (data.Response === "True") {
+        // console.log(data)
+        setMovies(data.Search);
+        setErrorMessage("");
+      } else {
+        setMovies([]);
+        setErrorMessage(data.Error);
+      }
+    } catch (error) {
+      setMovies([]);
+      setErrorMessage("Something went wrong. Please try again later.");
+    }
+
+  };
+
   const searchMovies = async (e) => {
     let data = "";
     e.preventDefault();
@@ -61,7 +82,7 @@ const HomePage = () => {
       console.log(search)
       switch (search) {
         case "title":
-          data = await ApiRequests.getMovies(query);
+          data = await ApiRequests.getMovies(query, currentPage);
           if (data.Response === "True") {
             // console.log(data)
             setMovies(data.Search);
@@ -90,10 +111,11 @@ const HomePage = () => {
           }
           data = await ApiRequests.getMoviesByYear(query, year);
           console.log(data)
-          if (data) {
+          if (data.Response === "True") {
             setMovies([data]);
             setErrorMessage("");
           } else {
+            console.log("teste")
             setMovies([]);
             setErrorMessage(data.Error);
           }
@@ -153,7 +175,7 @@ const HomePage = () => {
                 id="searchByTitle"
                 value="title"
                 checked={search === "title"}
-                onChange={() => setSearch("title")}
+                onChange={() => { setSearch("title"); setErrorMessage("") }}
               />
               <label className="form-check-label" htmlFor="searchByTitle">
                 Search by title
@@ -166,7 +188,7 @@ const HomePage = () => {
                 name="searchType"
                 id="searchByImdb"
                 value="imdb"
-                onChange={() => setSearch("imdb")}
+                onChange={() => { setSearch("imdb"); setErrorMessage("") }}
               />
               <label className="form-check-label" htmlFor="searchByImdb">
                 Search by IMDB ID
@@ -179,7 +201,7 @@ const HomePage = () => {
                 name="searchType"
                 id="searchByYear"
                 value="year"
-                onChange={() => setSearch("year")}
+                onChange={() => { setSearch("year"); setErrorMessage("") }}
               />
               <label className="form-check-label" htmlFor="searchByYear">
                 Search by year
@@ -200,8 +222,9 @@ const HomePage = () => {
 
           {errorMessage && <p className="text-danger" >{errorMessage}</p>}
           {movies.length > 0 && (
-            <div className="d-flex flex-wrap justify-content-center" style={{ marginTop: 10 }}>
+            <div className="d-flex flex-wrap justify-content-center" style={{ marginTop: 20 }}>
               {movies.map((movie) => (
+
                 <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
                   <MovieCard
                     movie={movie}
@@ -219,6 +242,35 @@ const HomePage = () => {
               ))}
             </div>
           )}
+          {
+            movies.length > 0 && search == "title" && (
+
+              <div class="pagination d-flex justify-content-center align-items-center bg-dark">
+                <ul class="pagination m-0 p-0 d-flex flex-row" style={{ listStyle: "none" }}>
+                  {
+                    currentPage != 1 && (
+
+                      <li class="page-item" style={{ marginRight: 5 }}>
+                        <a class="page-link" onClick={() => updatePagination(currentPage - 1)} aria-label="Previous">
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                    )
+                  }
+                  <li class="page-item active" aria-current="page" style={{ marginRight: 5 }}>
+                    <a class="page-link" onClick={() => updatePagination(1)}>1</a>
+                  </li>
+                  <li class="page-item" style={{ marginRight: 5 }}><a class="page-link" onClick={() => updatePagination(2)}>2</a></li>
+                  <li class="page-item" style={{ marginRight: 5 }}><a class="page-link" onClick={() => updatePagination(3)}>3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" onClick={() => updatePagination(currentPage + 1)} aria-label="Next">
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>

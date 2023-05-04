@@ -70,8 +70,8 @@ body {
 
 /* Button styles */
 .btn-primary {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary:hover {
