@@ -21,6 +21,7 @@ const HomePage = () => {
     JSON.parse(localStorage.getItem("seenMovies")) || []
   );
 
+  // save favorite movies to local storage
   const saveFavoriteMovie = (movie, isFavorite) => {
     let newFavoriteMovies = [...favoriteMovies];
     console.log(movie, isFavorite)
@@ -33,11 +34,14 @@ const HomePage = () => {
       // Add the movie to the favorites list
       newFavoriteMovies.push(movie);
     }
-
-    localStorage.setItem("favoriteMovies", JSON.stringify(newFavoriteMovies));
-    setFavoriteMovies(newFavoriteMovies);
+    try {
+      localStorage.setItem("favoriteMovies", JSON.stringify(newFavoriteMovies));
+      setFavoriteMovies(newFavoriteMovies);
+    } catch (error) {
+      setErrorMessage(error);
+    }
   };
-
+  // save seen movies to local storage
   const saveSeenMovie = (movie, seen) => {
     let newSeenMovies = [...seenMovies];
 
@@ -54,7 +58,7 @@ const HomePage = () => {
     localStorage.setItem("seenMovies", JSON.stringify(newSeenMovies));
     setSeenMovies(newSeenMovies);
   };
-
+  // update pagination
   const updatePagination = async (page) => {
     setCurrentPage(page);
     let data = "";
@@ -74,7 +78,7 @@ const HomePage = () => {
     }
 
   };
-
+  // search movies
   const searchMovies = async (e) => {
     let data = "";
     e.preventDefault();
@@ -131,13 +135,10 @@ const HomePage = () => {
   };
 
   return (
-
-
-
     <div className="container dark-style">
       {
         favoriteMovies.length > 0 &&
-        <h1 className="mb-4">Favorite Movies</h1>
+        <h1 className="mb-4">Favourite Movies</h1>
       }
 
       <div className="d-flex flex-wrap ">
@@ -226,7 +227,6 @@ const HomePage = () => {
               </div>
             )}
           </form>
-
           {errorMessage && <p className="text-danger" >{errorMessage}</p>}
           {movies.length > 0 && (
             <div className="d-flex flex-wrap justify-content-center" style={{ marginTop: 20 }}>
@@ -251,7 +251,6 @@ const HomePage = () => {
           )}
           {
             movies.length > 0 && search == "title" && (
-
               <nav>
                 <ul class="pagination justify-content-center bg-dark">
                   <li class="page-item">
@@ -277,7 +276,6 @@ const HomePage = () => {
                   </li>
                 </ul>
               </nav>
-
             )
           }
         </div>
