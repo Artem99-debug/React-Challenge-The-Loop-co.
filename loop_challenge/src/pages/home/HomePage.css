@@ -150,3 +150,10 @@ body.dark-mode {
   flex-wrap: wrap;
 }
   
+.pagination a:hover {
+  cursor: pointer;
+}
+
+.pagination .page-link:hover {
+  text-decoration: underline;
+}
