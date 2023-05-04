@@ -132,7 +132,11 @@ const HomePage = () => {
 
   return (
     <div className="container dark-style">
-      <h1 className="mb-4">Favorite Movies</h1>
+      {
+        favoriteMovies.length > 0 &&
+        <h1 className="mb-4">Favorite Movies</h1>
+      }
+
       <div className="d-flex flex-wrap justify-content-center">
         {favoriteMovies.map((movie) => (
           <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={movie.imdbID}>
@@ -163,7 +167,7 @@ const HomePage = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary-search" type="submit">
                 Search
               </button>
             </div>

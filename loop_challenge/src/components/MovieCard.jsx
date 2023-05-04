@@ -56,7 +56,7 @@ const MovieCard = ({ movie, handleAddToFavorites, favoritos, alreadySeen, isFavo
                         className="btn btn-outline-secondary btn-sm mx-1"
                         onClick={handleAddSeen}
                     >
-                        {seen ? "Already Seen" : "Not Seen"}
+                        {seen ? "Unseen" : "Seen"}
 
                     </button>
                 )}
